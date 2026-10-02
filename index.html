@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PustakaKu - Perpustakaan Novel Pribadi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header class="navbar">
+        <div class="logo">
+            <span class="logo-icon">📖</span>
+            <div>
+                <h1>PustakaKu</h1>
+                <p>Perpustakaan & Reader Novel Pribadi</p>
+            </div>
+        </div>
+        <button id="btn-open-add-modal" class="btn btn-primary">+ Tambah Novel</button>
+    </header>
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Tampilan Dashboard / Katalog -->
+        <section id="view-dashboard" class="view-section active">
+            <div class="search-bar">
+                <input type="text" id="search-input" placeholder="Cari judul novel...">
+            </div>
+
+            <!-- Pesan Kosong (Default) -->
+            <div id="empty-state" class="empty-state">
+                <div class="empty-icon">📚</div>
+                <h3>Belum Ada Novel</h3>
+                <p>Perpustakaanmu masih kosong. Yuk, tambahkan novel pertamamu!</p>
+                <button class="btn btn-primary btn-add-trigger">+ Tambah Novel Sekarang</button>
+            </div>
+
+            <!-- Grid Daftar Novel -->
+            <div id="novel-grid" class="novel-grid"></div>
+        </section>
+
+        <!-- Tampilan Detail Novel & Daftar Bab -->
+        <section id="view-novel-detail" class="view-section">
+            <button id="btn-back-to-dashboard" class="btn btn-secondary">← Kembali ke Katalog</button>
+            
+            <div class="novel-header-card">
+                <img id="detail-cover" src="" alt="Sampul Novel" class="detail-cover-img">
+                <div class="detail-info">
+                    <h2 id="detail-title">Judul Novel</h2>
+                    <p class="detail-meta"><strong>Penulis:</strong> <span id="detail-author">-</span></p>
+                    <p class="detail-meta"><strong>Genre:</strong> <span id="detail-genre">-</span></p>
+                    <div class="detail-actions">
+                        <button id="btn-open-add-chapter" class="btn btn-primary">+ Tambah Bab Baru</button>
+                        <button id="btn-delete-novel" class="btn btn-danger">Hapus Novel</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chapter-list-container">
+                <h3>Daftar Bab</h3>
+                <ul id="chapter-list" class="chapter-list"></ul>
+            </div>
+        </section>
+
+        <!-- Tampilan Halaman Baca (Reader Mode) -->
+        <section id="view-reader" class="view-section">
+            <div class="reader-toolbar">
+                <button id="btn-back-to-detail" class="btn btn-secondary">← Daftar Bab</button>
+                <div class="reader-controls">
+                    <div class="control-group">
+                        <button id="btn-font-sub" class="btn-icon">A-</button>
+                        <span id="font-size-label">16px</span>
+                        <button id="btn-font-add" class="btn-icon">A+</button>
+                    </div>
+                    <div class="control-group">
+                        <button id="theme-light" class="btn-theme theme-btn-light active">A</button>
+                        <button id="theme-sepia" class="btn-theme theme-btn-sepia">A</button>
+                        <button id="theme-dark" class="btn-theme theme-btn-dark">A</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="reader-content-box" class="reader-body theme-light">
+                <h2 id="reader-chapter-title">Judul Bab</h2>
+                <div id="reader-text-container" class="reader-text"></div>
+
+                <div class="reader-nav">
+                    <button id="btn-prev-chapter" class="btn btn-secondary">← Bab Sebelumnya</button>
+                    <button id="btn-next-chapter" class="btn btn-secondary">Bab Selanjutnya →</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal Form Tambah Novel -->
+    <div id="modal-add-novel" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Tambah Novel Baru</h2>
+            <form id="form-add-novel">
+                <div class="form-group">
+                    <label for="novel-title">Judul Novel *</label>
+                    <input type="text" id="novel-title" required placeholder="Masukkan judul novel">
+                </div>
+                <div class="form-group">
+                    <label for="novel-author">Penulis *</label>
+                    <input type="text" id="novel-author" required placeholder="Nama penulis">
+                </div>
+                <div class="form-group">
+                    <label for="novel-genre">Genre</label>
+                    <input type="text" id="novel-genre" placeholder="Contoh: Fantasy, Romance, Slice of Life">
+                </div>
+                <div class="form-group">
+                    <label for="novel-cover">Sampul Novel (File Gambar dari HP/Laptop)</label>
+                    <input type="file" id="novel-cover" accept="image/*">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Simpan Novel</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal Form Tambah Bab -->
+    <div id="modal-add-chapter" class="modal">
+        <div class="modal-content modal-large">
+            <span class="close-modal">&times;</span>
+            <h2>Tambah Bab Baru</h2>
+            <form id="form-add-chapter">
+                <div class="form-group">
+                    <label for="chapter-title">Judul / Angka Bab *</label>
+                    <input type="text" id="chapter-title" required placeholder="Contoh: Bab 1 - Awal Mula">
+                </div>
+                <div class="form-group">
+                    <label for="chapter-content">Isi Teks Novel *</label>
+                    <textarea id="chapter-content" rows="12" required placeholder="Tempelkan isi novel di sini... (Spasi dan baris baru akan diatur otomatis)"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Simpan Bab</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+  
