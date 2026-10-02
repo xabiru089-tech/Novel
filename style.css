@@ -1,0 +1,326 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    min-height: 100vh;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 24px;
+    background-color: #1e293b;
+    border-bottom: 1px solid #334155;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo-icon {
+    font-size: 28px;
+}
+
+.logo h1 {
+    font-size: 18px;
+    color: #f8fafc;
+}
+
+.logo p {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Layout Container */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.view-section {
+    display: none;
+}
+
+.view-section.active {
+    display: block;
+}
+
+/* Search Bar */
+.search-bar {
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #334155;
+    background-color: #1e293b;
+    color: #fff;
+    font-size: 14px;
+}
+
+/* State Kosong */
+.empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: #1e293b;
+    border-radius: 12px;
+    border: 2px dashed #334155;
+    margin-top: 20px;
+}
+
+.empty-icon {
+    font-size: 48px;
+    margin-bottom: 12px;
+}
+
+.empty-state h3 {
+    margin-bottom: 8px;
+}
+
+.empty-state p {
+    color: #94a3b8;
+    margin-bottom: 20px;
+}
+
+/* Grid Novel */
+.novel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+}
+
+.novel-card {
+    background-color: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #334155;
+}
+
+.novel-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.novel-card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    background-color: #334155;
+}
+
+.novel-card-body {
+    padding: 12px;
+}
+
+.novel-card-title {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 4px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.novel-card-author {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+/* Detail Novel */
+.novel-header-card {
+    display: flex;
+    gap: 20px;
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 16px;
+    margin-bottom: 24px;
+}
+
+.detail-cover-img {
+    width: 130px;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: #334155;
+}
+
+.detail-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.detail-meta {
+    margin-top: 8px;
+    color: #cbd5e1;
+}
+
+.detail-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+}
+
+/* Daftar Bab */
+.chapter-list-container {
+    background-color: #1e293b;
+    padding: 20px;
+    border-radius: 12px;
+}
+
+.chapter-list {
+    list-style: none;
+    margin-top: 12px;
+}
+
+.chapter-item {
+    padding: 12px 16px;
+    border-bottom: 1px solid #334155;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    transition: background 0.2s;
+}
+
+.chapter-item:hover {
+    background-color: #334155;
+}
+
+/* READER MODE (FITUR SPASI & TEKS) */
+.reader-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1e293b;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+}
+
+.reader-controls {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-icon {
+    background: #334155;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-theme {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.theme-btn-light { background: #f8fafc; color: #0f172a; }
+.theme-btn-sepia { background: #fef3c7; color: #78350f; }
+.theme-btn-dark  { background: #0f172a; color: #f8fafc; }
+
+.reader-body {
+    padding: 30px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+}
+
+/* Skema Warna Reader */
+.theme-light { background-color: #f8fafc; color: #1e293b; }
+.theme-sepia { background-color: #fef3c7; color: #451a03; }
+.theme-dark  { background-color: #020617; color: #e2e8f0; }
+
+.reader-body h2 {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+/* FORMAT PARAGRAF SPASI 1 PAS BERSIH */
+.reader-text p {
+    line-height: 1.6;
+    margin-bottom: 12px; /* Pas 1 Spasi Ponsel */
+    text-align: left;    /* Teks Rata Kiri Rapih */
+}
+
+.reader-nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Tombol Global & Modal */
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary { background-color: #2563eb; color: white; }
+.btn-secondary { background-color: #475569; color: white; }
+.btn-danger { background-color: #dc2626; color: white; }
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.7);
+    justify-content: center; align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: #1e293b;
+    padding: 24px;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+}
+
+.modal-large { max-width: 650px; }
+
+.close-modal {
+    position: absolute;
+    right: 16px; top: 12px;
+    font-size: 24px; cursor: pointer;
+}
+
+.form-group { margin-bottom: 16px; }
+.form-group label { display: block; margin-bottom: 6px; font-size: 14px; }
+.form-group input, .form-group textarea {
+    width: 100%; padding: 10px;
+    border-radius: 6px; border: 1px solid #334155;
+    background: #0f172a; color: white;
+  }
